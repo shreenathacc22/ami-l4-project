@@ -35,6 +35,8 @@ reported in `code/READOUT.md`.
 | `docs/Shree-session-log.md` | Day-by-day record of what was asked, found and done. |
 | `docs/PR-description-10082026.md` | The text of PR #2. |
 | `docs/S5-facilitator-sheet.md` / `.pdf` | Printable sheet for running the S5 study. |
+| `docs/Ami-L4-Readout-Bhargava-Shree-2026-10-08.pptx` / `.pdf` | **The readout deck** (10 slides, speaker notes in the PPTX). |
+| `docs/PRESENTATION.md` | Run-of-show for the 5-minute walkthrough: timing, who says what, likely questions. |
 | `tools/` | Helper scripts used outside the repo (see below). |
 | `evidence/` | Screenshots of the `/logs` dashboard from the live app (populated KPIs, guardrail refusals, a cache hit). |
 | `runs/` | Raw logs of the measured runs (golden before/after, evals per phase, cache benchmark, final run). |
@@ -69,6 +71,7 @@ pretend order database in `ami/store.py`. These are classroom fixtures, not real
 | `tools/eval_summary.py`, `tools/dryrun_eval.py` | Summarise an eval result; dry-run the harness offline. |
 | `tools/phase1_execlog.sh`, `tools/capture.sh` | Re-run Phase 1 steps and capture command + output into the plan. |
 | `tools/md2pdf.py` | Markdown → PDF with headless Chrome (needs `pip install markdown`). |
+| `tools/build_deck_pptx.js`, `tools/deck2pdf.py` | Rebuild the readout deck as PPTX (pptxgenjs) and print the slide HTML to PDF (headless Chrome). |
 | `tools/ipv4_sitecustomize.py` | Optional: force IPv4 for a whole Python process via `PYTHONPATH`. |
 
 ## Status

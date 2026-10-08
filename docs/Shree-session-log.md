@@ -142,3 +142,6 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 ## Deck + public repo check (2026-10-08)
 - Deck built as a Slides artifact (10 slides, notes with timing): https://claude.ai/artifact/KMns74rheLukvPD6BzQzoW — private until shared. Plan §16.
 - Fresh clone of https://github.com/shreenathacc22/ami-l4-project: 342 tests pass with the placeholder key from `.env.example`; README made explicit about it.
+
+## Item 6 prepared (2026-10-08)
+- Deck exported as `Ami-L4-Readout-Bhargava-Shree-2026-10-08.pptx` (pptxgenjs, validated) and `.pdf` (Chrome print of the live deck). Run-of-show in `ami-l4-project/docs/PRESENTATION.md`. Both files in this folder and in the public repo. Plan §17; pending item 7 now "delivery only".

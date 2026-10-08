@@ -797,7 +797,7 @@ $ tools/s5_reset.sh P1      # reset again so P1 doesn't inherit the test turn's 
 | 4 | Witnessed final run `tools/phase4_runs.sh` (~220k tokens) on the final code; new READOUT numbers; Bhargava signs | Shree + Bhargava | item 2, so the S5 fix is measured |
 | 5 | ~~Failure screenshots in the chat UI (READOUT)~~ ✅ done 2026-10-08, see §15 | Claude | — |
 | 6 | Bhargava reviews and merges PR #2 (Phase 6) | Bhargava | items 3–4 |
-| 7 | 5-minute presentation before the 11th | Shree + Bhargava | items 4 and 6 |
+| 7 | 5-minute presentation before the 11th — deck, PPTX, PDF and run-of-show ready (§17); only the delivery is pending | Shree + Bhargava | items 4 and 6 |
 
 ## 14. Public copy of the project ✅ (2026-10-08)
 Shree asked for a copy outside both Bhargava's repo and the fork, public, usable from anywhere, with no keys or personal data.
@@ -847,3 +847,16 @@ $ OPENAI_API_KEY=dummy-key-for-tests python -m pytest -q
 342 passed, 83 warnings in 3.73s
 ```
 Finding: test collection needs `OPENAI_API_KEY` set to anything. The README's `cp .env.example .env` step provides a placeholder, so the documented steps work; the README now says so explicitly. No code change.
+
+## 17. Item 6 prepared — deck files and run-of-show ✅ (2026-10-08)
+- **Deck (live, editable):** https://claude.ai/artifact/KMns74rheLukvPD6BzQzoW — private until shared from its Share menu.
+- **PowerPoint:** `Ami-L4-Readout-Bhargava-Shree-2026-10-08.pptx` — built with pptxgenjs as a structured deck (theme colours, two layouts, sections, speaker notes on all 10 slides, the two injection screenshots embedded). `validate.py`: all validations passed. Fonts: Cambria headings, Calibri body (safe in any Office).
+- **PDF:** `Ami-L4-Readout-Bhargava-Shree-2026-10-08.pdf` — the artifact deck's own slide HTML printed with headless Chrome at 1920×1080 per page (`tools/deck2pdf.py`), so it matches the live deck exactly; checked page by page.
+- **Run-of-show:** `docs/PRESENTATION.md` in the public repo — timing per slide, suggested split between the two presenters, likely questions with answers, a pre-flight checklist.
+- Copies: `Project-Shree-Bhargava/` (this folder) and `ami-l4-project/docs/` (public repo). Tool scripts kept in `tools/` of both.
+```
+$ NODE_PATH=$PWD/node_modules node build.js        # pptxgenjs 4.0.1 + applyTheme
+$ python validate.py Ami-L4-Readout-Bhargava-Shree-2026-10-08.pptx   → All validations PASSED!
+$ python tools/deck2pdf.py <deck_root> Ami-L4-Readout-Bhargava-Shree-2026-10-08.pdf <blob=png ...>   → 10 slides
+```
+Note: this machine has no LibreOffice, so the PPTX could not be rendered to images here; its layout was checked by geometry and by reading the file back with python-pptx (10 slides, titles, notes, 2 pictures, 3 tables). Open it once in PowerPoint before presenting.
