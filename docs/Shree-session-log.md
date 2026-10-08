@@ -133,3 +133,8 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 - Facilitator sheet: `S5-facilitator-sheet.md` / `.pdf`. Ami is running on http://localhost:4000, reset and ready for P1.
 - PDF builder copied to `tools/md2pdf.py`, with its own env in `tools/.pdfenv`.
 - Pending list now lives in plan §13 and is updated after every phase.
+
+## Public repo + failure screenshots (2026-10-08)
+- Public copy created at https://github.com/shreenathacc22/ami-l4-project (plan + PDF, logs, tools, evidence, runs, code snapshot of `20f433d`). Scanned: no API key value, no `.env`, no personal messages (meeting notes, Balaji's email and screenshots were left out on purpose). Plan §14.
+- READOUT open item "failure screenshots" done: injection case typed into the real chat UI with headless Chrome (`tools/screenshot_chat.py`). Before: still "thinking…" at 90 s. After: handoff reply in 14.2 s, no tools called. Added to the PR branch (`docs/evidence/`, commit `851a707`) and pushed, so PR #2 is updated. Plan §15.
+- Pending list (§13): item 5 closed; items 1–4, 6, 7 remain.

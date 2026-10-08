@@ -28,7 +28,7 @@ reported in `code/READOUT.md`.
 
 | Path | What it is |
 |---|---|
-| `code/` | Snapshot of branch `fix/s1-and-eval-failures` at commit `20f433d` (upstream master `1b04d45` merged in). Run it from here, or take the live branch from [shreenathacc22/aurex-ami](https://github.com/shreenathacc22/aurex-ami/tree/fix/s1-and-eval-failures). |
+| `code/` | Snapshot of branch `fix/s1-and-eval-failures` at commit `851a707` (upstream master `1b04d45` merged in; adds the injection-case screenshots). Run it from here, or take the live branch from [shreenathacc22/aurex-ami](https://github.com/shreenathacc22/aurex-ami/tree/fix/s1-and-eval-failures). |
 | `code/READOUT.md` | The one-page readout: goal, before/after, what did not work, what is still open. |
 | `code/docs/USER_STUDY.md` | The S5 user-trust study kit (3 participants, 6 tasks, redesign, re-test). |
 | `docs/Shree-plan-10072026.md` / `.pdf` | The fix plan, with the execution log of every phase: commands, real output, numbers, decisions, and the pending-items table (§13). |
