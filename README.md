@@ -28,7 +28,7 @@ reported in `code/READOUT.md`.
 
 | Path | What it is |
 |---|---|
-| `code/` | Snapshot of branch `fix/s1-and-eval-failures` at commit `851a707` (upstream master `1b04d45` merged in; adds the injection-case screenshots). Run it from here, or take the live branch from [shreenathacc22/aurex-ami](https://github.com/shreenathacc22/aurex-ami/tree/fix/s1-and-eval-failures). |
+| `code/` | Snapshot of upstream `master` at `317632a`, after PR #2 was merged on 2026-10-08. Run it from here, or clone [barusr9/aurex-ami](https://github.com/barusr9/aurex-ami). |
 | `code/READOUT.md` | The one-page readout: goal, before/after, what did not work, what is still open. |
 | `code/docs/USER_STUDY.md` | The S5 user-trust study kit (3 participants, 6 tasks, redesign, re-test). |
 | `docs/Shree-plan-10072026.md` / `.pdf` | The fix plan, with the execution log of every phase: commands, real output, numbers, decisions, and the pending-items table (§13). |
@@ -76,6 +76,6 @@ pretend order database in `ami/store.py`. These are classroom fixtures, not real
 
 ## Status
 
-Done: Phases 0–4 (fixes, cost work, golden score, final measurement, readout), PR #2 opened.
-Open: S5 study sessions and redesign, witnessed re-run and sign-off, PR review and merge. The live
+Done: Phases 0–4 (fixes, cost work, golden score, final measurement, readout); **PR #2 reviewed by Bhargava and merged into master on 2026-10-08** (`317632a`).
+Open: S5 study sessions and redesign, witnessed re-run and sign-off (follow-ups go in a new PR). The live
 pending list is §13 of `docs/Shree-plan-10072026.md`.

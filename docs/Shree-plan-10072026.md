@@ -796,7 +796,7 @@ $ tools/s5_reset.sh P1      # reset again so P1 doesn't inherit the test turn's 
 | 3 | P4 re-test; fill in USER_STUDY.md Results; update the READOUT and PR #2 | Shree + Claude | item 2 |
 | 4 | Witnessed final run `tools/phase4_runs.sh` (~220k tokens) on the final code; new READOUT numbers; Bhargava signs | Shree + Bhargava | item 2, so the S5 fix is measured |
 | 5 | ~~Failure screenshots in the chat UI (READOUT)~~ ✅ done 2026-10-08, see §15 | Claude | — |
-| 6 | Bhargava reviews and merges PR #2 (Phase 6) | Bhargava | items 3–4 |
+| 6 | ~~Bhargava reviews and merges PR #2 (Phase 6)~~ ✅ merged 2026-10-08 18:50 UTC, master `317632a` (§18) | Bhargava | — |
 | 7 | 5-minute presentation before the 11th — deck, PPTX, PDF and run-of-show ready (§17); only the delivery is pending | Shree + Bhargava | items 4 and 6 |
 
 ## 14. Public copy of the project ✅ (2026-10-08)
@@ -860,3 +860,16 @@ $ python validate.py Ami-L4-Readout-Bhargava-Shree-2026-10-08.pptx   → All val
 $ python tools/deck2pdf.py <deck_root> Ami-L4-Readout-Bhargava-Shree-2026-10-08.pdf <blob=png ...>   → 10 slides
 ```
 Note: this machine has no LibreOffice, so the PPTX could not be rendered to images here; its layout was checked by geometry and by reading the file back with python-pptx (10 slides, titles, notes, 2 pictures, 3 tables). Open it once in PowerPoint before presenting.
+
+## 18. Phase 6 — PR #2 merged ✅ (2026-10-08)
+Bhargava approved and merged. Checked from here, not taken on trust:
+```
+$ gh pr view 2 -R barusr9/aurex-ami --json state,mergedAt,commits
+state=MERGED  merged=2026-10-08T18:50:17Z  commits=11
+$ git fetch origin && git merge-base --is-ancestor 851a707 origin/master && echo yes
+yes                                 # our last commit is an ancestor of master
+$ git ls-remote origin master  →  317632a
+```
+- No review comments or change requests were left on the PR (approve-and-merge).
+- Local `master` fast-forwarded to `317632a`; the public repo's `code/` snapshot now mirrors upstream master.
+- **Consequence for the remaining items:** the S5 redesign fix and the witnessed-run numbers (READOUT update + signature) now go on a **new branch and PR**, since `fix/s1-and-eval-failures` is merged.
