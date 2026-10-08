@@ -1,0 +1,19 @@
+# secrets — never commit
+.env
+.env.*
+!.env.example
+
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.cache/
+
+# runtime state of the web app / evals
+code/state/*
+!code/state/.gitkeep
+
+# OS
+.DS_Store
