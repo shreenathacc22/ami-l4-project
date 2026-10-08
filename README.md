@@ -18,7 +18,7 @@ data**: configuration comes from `.env` files that are never committed (see `cod
 | Behavioural suite (20 cases) | 15/20 | **17–20/20** |
 | Behavioural cost per case / p95 latency | 0.89¢ / 17.9 s | **0.79¢ / 13.8 s** |
 | Repeated general questions | — | **−54% tokens** (answer cache) |
-| Unit tests | 251 passing, 46 failing | **342 passing** |
+| Unit tests | 251 passing, 46 failing | **346 passing** (master `317632a`) |
 
 The S1 target "under half the cost" was **not** met (−38% golden, −11% behavioural). The one change that
 cut cost further (a 12-word cap on the ReAct thought) broke a guardrail and was reverted. Both are
@@ -49,7 +49,7 @@ python3.13 -m venv .venv && source .venv/bin/activate     # 3.13: pandas does no
 pip install -r requirements.txt
 cp .env.example .env            # the placeholder key in it is enough for the tests; put your real
                                 #   OPENAI_API_KEY / OPENAI_BASE_URL / MODEL in .env to run the app or evals
-python -m pytest -q             # 342 tests, no network needed (checked on a fresh clone, 2026-10-08)
+python -m pytest -q             # 346 tests, no network needed (checked on master's tree, 2026-10-08)
 PORT=4000 python web.py         # chat UI at http://localhost:4000, dashboard at /logs
 python evals.py                 # behavioural suite (uses the model)
 python golden.py                # golden set with the LLM judge (uses the model)

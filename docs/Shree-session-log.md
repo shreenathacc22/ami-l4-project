@@ -148,3 +148,4 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 
 ## PR #2 merged (2026-10-08)
 - Verified on GitHub: PR #2 state MERGED at 18:50 UTC, 11 commits, no review comments; `851a707` is an ancestor of `origin/master` (`317632a`). Local master fast-forwarded; public repo snapshot updated to master. Plan §18. Pending: items 1–4 (S5, witnessed run) → new PR; item 6 delivery of the readout.
+- Correction: Bhargava's review was done as commits after the merge — a security fix to our Phase 1 `guarded_run` (model-supplied `scope` was consulted before the session's; now dropped unconditionally, with a new test) and a test-flake fix. Master runs 346 tests green. To be added to the READOUT's §5 in the follow-up PR.

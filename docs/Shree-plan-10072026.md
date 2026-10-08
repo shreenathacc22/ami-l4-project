@@ -870,6 +870,7 @@ $ git fetch origin && git merge-base --is-ancestor 851a707 origin/master && echo
 yes                                 # our last commit is an ancestor of master
 $ git ls-remote origin master  →  317632a
 ```
-- No review comments or change requests were left on the PR (approve-and-merge).
+- **The review happened in commits, not comments** (no GitHub review comments exist). After merging, Bhargava pushed a **review fix for PR #2** (`a77e42d`, merged as `317632a`): our Phase 1 `guarded_run` read the scope as `args.pop("scope") or work.scope`, consulting the model-written tool arguments *first*. A prompt injection that supplied a `scope` could therefore have read another customer's order. The fix drops any `scope` in the arguments unconditionally and uses only the session's, with a new `tests/test_policy_scope.py`. Also fixed: a ~6% flake in the tampered-token tests (`5f257cc`). Credit to Bhargava; this is a real security catch on our code, and it belongs in the readout's "what did not work" list.
+- Tests on merged master (`317632a`, run here on its exact tree): **346 passed, 0 failed**.
 - Local `master` fast-forwarded to `317632a`; the public repo's `code/` snapshot now mirrors upstream master.
 - **Consequence for the remaining items:** the S5 redesign fix and the witnessed-run numbers (READOUT update + signature) now go on a **new branch and PR**, since `fix/s1-and-eval-failures` is merged.
