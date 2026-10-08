@@ -45,8 +45,9 @@ reported in `code/READOUT.md`.
 cd code
 python3.13 -m venv .venv && source .venv/bin/activate     # 3.13: pandas does not build on 3.14 yet
 pip install -r requirements.txt
-cp .env.example .env            # then put your own OPENAI_API_KEY / OPENAI_BASE_URL / MODEL in .env
-python -m pytest -q             # 342 tests, no network needed
+cp .env.example .env            # the placeholder key in it is enough for the tests; put your real
+                                #   OPENAI_API_KEY / OPENAI_BASE_URL / MODEL in .env to run the app or evals
+python -m pytest -q             # 342 tests, no network needed (checked on a fresh clone, 2026-10-08)
 PORT=4000 python web.py         # chat UI at http://localhost:4000, dashboard at /logs
 python evals.py                 # behavioural suite (uses the model)
 python golden.py                # golden set with the LLM judge (uses the model)

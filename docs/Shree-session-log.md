@@ -138,3 +138,7 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 - Public copy created at https://github.com/shreenathacc22/ami-l4-project (plan + PDF, logs, tools, evidence, runs, code snapshot of `20f433d`). Scanned: no API key value, no `.env`, no personal messages (meeting notes, Balaji's email and screenshots were left out on purpose). Plan §14.
 - READOUT open item "failure screenshots" done: injection case typed into the real chat UI with headless Chrome (`tools/screenshot_chat.py`). Before: still "thinking…" at 90 s. After: handoff reply in 14.2 s, no tools called. Added to the PR branch (`docs/evidence/`, commit `851a707`) and pushed, so PR #2 is updated. Plan §15.
 - Pending list (§13): item 5 closed; items 1–4, 6, 7 remain.
+
+## Deck + public repo check (2026-10-08)
+- Deck built as a Slides artifact (10 slides, notes with timing): https://claude.ai/artifact/KMns74rheLukvPD6BzQzoW — private until shared. Plan §16.
+- Fresh clone of https://github.com/shreenathacc22/ami-l4-project: 342 tests pass with the placeholder key from `.env.example`; README made explicit about it.

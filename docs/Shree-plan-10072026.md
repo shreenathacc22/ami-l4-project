@@ -835,3 +835,15 @@ $ kill <baseline pid>; tools/s5_reset.sh P1        # app on 4000 reset again for
 ![injection — after](../evidence/injection-after-10082026.png)
 
 Caveat: the old `web.py` prints nothing while it retries, so the server log cannot show the retry loop; the 14-minute figure comes from the Phase 1 analysis of Bhargava's eval run (§7). The screenshots went into the PR branch as `docs/evidence/` (commit `851a707`, pushed, so PR #2 shows them) and the READOUT row now points at them.
+
+## 16. Deck and public-repo check ✅ (2026-10-08)
+**Deck for the 5-minute walkthrough:** https://claude.ai/artifact/KMns74rheLukvPD6BzQzoW (Slides artifact, 10 slides, speaker notes with timing on every slide; downloadable as PPTX/PDF from its Share menu). Private until Shree shares it. Outline: cover · the problem (3 cards) · method (frozen suites, judge audit, before/after commits) · headline (4 big numbers) · full before/after table · six changes · injection case screenshots · what did not work (S1 target missed, 2B reverted, routing, refusal reason) · production alerts · still open + links.
+
+**Fresh-clone check of the public repo** (`git clone https://github.com/shreenathacc22/ami-l4-project`):
+```
+$ cd code && python -m pytest -q
+ERROR tests/test_prefetch.py - KeyError: 'OPENAI_API_KEY'     # 5 collection errors: no .env in a fresh clone
+$ OPENAI_API_KEY=dummy-key-for-tests python -m pytest -q
+342 passed, 83 warnings in 3.73s
+```
+Finding: test collection needs `OPENAI_API_KEY` set to anything. The README's `cp .env.example .env` step provides a placeholder, so the documented steps work; the README now says so explicitly. No code change.
