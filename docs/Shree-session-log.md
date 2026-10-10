@@ -149,3 +149,11 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 ## PR #2 merged (2026-10-08)
 - Verified on GitHub: PR #2 state MERGED at 18:50 UTC, 11 commits, no review comments; `851a707` is an ancestor of `origin/master` (`317632a`). Local master fast-forwarded; public repo snapshot updated to master. Plan §18. Pending: items 1–4 (S5, witnessed run) → new PR; item 6 delivery of the readout.
 - Correction: Bhargava's review was done as commits after the merge — a security fix to our Phase 1 `guarded_run` (model-supplied `scope` was consulted before the session's; now dropped unconditionally, with a new test) and a test-flake fix. Master runs 346 tests green. To be added to the READOUT's §5 in the follow-up PR.
+
+## 2026-10-09 — Bhargava call, meeting notes, deck v2
+- Recording analysed from `10092026-zoom-recording/` (80 min; Shree, Bhargava, Kumar). Transcribed locally with faster-whisper (nothing uploaded); transcript saved beside the recording; keyframes used for screen context.
+- Meeting document (summary, discussion points with timestamps, decisions, Bhargava's slide-by-slide notes, action items with owner/due/status, metric glossary, sources): https://claude.ai/code/artifact/834f528b-e282-41b0-8305-4f5d8c6e4505
+- Bhargava's structure applied to the deck: product (login gate before/after) → the ask (six goals) → what we found → **one results table by goal with Met/Partial verdicts** → what we changed by goal and layer → where this goes next; measurement, "what did not work" detail and the watch list moved to appendix A1–A4. 7 presented slides, 4:50. Bhargava slides 1–3, Shree 4–7.
+- Live deck republished (v19), PPTX rebuilt and validated, PDF reprinted (11 pages) and checked page by page; run-of-show rewritten. Plan §19.
+- Side effect fixed: stopping the stage2 server also stopped the Ami app on 4000; restarted with `tools/s5_reset.sh P1`.
+- Next: rehearsal Fri 10 Oct 2–3 pm; send Kumar the links; S5 sessions and witnessed run still open (plan §13).

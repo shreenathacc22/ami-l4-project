@@ -739,7 +739,7 @@ saved .../evidence/logs-dashboard-top-10082026.png  page='Ami — observability 
 - **Account question not cached:** the order-status turn ran the agent normally (`get_order`, 3,540 ms).
 - The "$0.113 per turn" KPI is inflated: the trace also holds the eval runs' model calls (see caveat in 4.2).
 
-![/logs dashboard — top](../evidence/logs-dashboard-top-10082026.png)
+![/logs dashboard — top](evidence/logs-dashboard-top-10082026.png)
 
 Full-page capture (5,930 px, every event): `evidence/logs-dashboard-10082026.png`.
 
@@ -797,7 +797,10 @@ $ tools/s5_reset.sh P1      # reset again so P1 doesn't inherit the test turn's 
 | 4 | Witnessed final run `tools/phase4_runs.sh` (~220k tokens) on the final code; new READOUT numbers; Bhargava signs | Shree + Bhargava | item 2, so the S5 fix is measured |
 | 5 | ~~Failure screenshots in the chat UI (READOUT)~~ ✅ done 2026-10-08, see §15 | Claude | — |
 | 6 | ~~Bhargava reviews and merges PR #2 (Phase 6)~~ ✅ merged 2026-10-08 18:50 UTC, master `317632a` (§18) | Bhargava | — |
-| 7 | 5-minute presentation before the 11th — deck, PPTX, PDF and run-of-show ready (§17); only the delivery is pending | Shree + Bhargava | items 4 and 6 |
+| 7 | 5-minute presentation before the 11th — **deck v2 in Bhargava's top-down flow** ready as live deck, PPTX, PDF and run-of-show (§19); rehearsal Fri 10 Oct 2–3 pm; only the delivery is pending | Shree + Bhargava | — |
+| 8 | Send Kumar the repo links (barusr9/aurex-ami, shreenathacc22/ami-l4-project) and the deck link; Kumar creates the WhatsApp group, tells Balaji, pulls the repo and sends inputs by 11 Oct | Shree, Kumar | — |
+| 9 | Decide whether readout.html gets the final numbers (its figures are the 10-08 pre-merge ones) | Bhargava | — |
+| 10 | Confirm the presenter split at the rehearsal: Bhargava slides 1–3 and Shree 4–7 (as built), or Bhargava through slide 5 | Shree + Bhargava | — |
 
 ## 14. Public copy of the project ✅ (2026-10-08)
 Shree asked for a copy outside both Bhargava's repo and the fork, public, usable from anywhere, with no keys or personal data.
@@ -831,8 +834,8 @@ $ kill <baseline pid>; tools/s5_reset.sh P1        # app on 4000 reset again for
 | Tools called | — | none (the "Agent internals" panel shows *No tools called this turn*) |
 | Cost | retries for minutes | the 15 s gateway retry budget, then `DEGRADED_REPLY` |
 
-![injection — before](../evidence/injection-before-10082026.png)
-![injection — after](../evidence/injection-after-10082026.png)
+![injection — before](evidence/injection-before-10082026.png)
+![injection — after](evidence/injection-after-10082026.png)
 
 Caveat: the old `web.py` prints nothing while it retries, so the server log cannot show the retry loop; the 14-minute figure comes from the Phase 1 analysis of Bhargava's eval run (§7). The screenshots went into the PR branch as `docs/evidence/` (commit `851a707`, pushed, so PR #2 shows them) and the READOUT row now points at them.
 
@@ -874,3 +877,46 @@ $ git ls-remote origin master  →  317632a
 - Tests on merged master (`317632a`, run here on its exact tree): **346 passed, 0 failed**.
 - Local `master` fast-forwarded to `317632a`; the public repo's `code/` snapshot now mirrors upstream master.
 - **Consequence for the remaining items:** the S5 redesign fix and the witnessed-run numbers (READOUT update + signature) now go on a **new branch and PR**, since `fix/s1-and-eval-failures` is merged.
+
+## 19. Execution log — 9 October call, meeting notes and deck v2 ✅ (2026-10-09)
+**Inputs:** `10092026-zoom-recording/` (video 160 MB, audio 54 MB, `chat.txt`, `recording.conf`): the 80-minute Zoom call of 9 October, 17:25–18:45, Shree + Bhargava + Thalanayar Muthukumar ("Kumar", a classmate from another group who joined at 0:05 and left at 0:56).
+
+**Transcription (local, nothing uploaded):** no ffmpeg or whisper on this Mac, so a scratch venv with `faster-whisper` 1.2.1 (small model, int8, CPU; `av<16` pinned because PyAV 19 breaks it). About 25 minutes for 80 minutes of audio. Output: `10092026-zoom-recording/transcript-10092026.txt` (914 timestamped lines; a few words and names are mis-heard, check the recording before quoting). One video keyframe every 2 minutes (PyAV) gave the screen context: the plan PDF, READOUT.md, the live deck, the Keynote copy, and Bhargava's readout.html.
+```
+$ asr/bin/pip install faster-whisper "av<16"
+$ asr/bin/python transcribe.py audio1319112997.m4a transcript_small.txt small     # ~25 min
+$ asr/bin/python frames.py video1319112997.mp4 frames 120                           # 41 keyframes
+```
+
+**Meeting document (for the team):** https://claude.ai/code/artifact/834f528b-e282-41b0-8305-4f5d8c6e4505 — summary, who/when, discussion points with timestamps, decisions, Bhargava's slide-by-slide recommendations, action items (owner, due, status), a plain-language glossary of the metrics (Kumar's request), sources.
+
+**What Bhargava asked for (and what the deck became):**
+| 8 Oct slide | Bhargava | Deck v2 |
+|---|---|---|
+| Injection screenshots (was slide 2 after his edits) | "Look and feel first; replace the right-hand image with the login screenshot" | **2 · The product**: original class UI (no login) beside Ami now (login gate) |
+| The problem, 3 cards | "Six cases, six boxes; change problem to goal" | **3 · The ask**: Balaji's six goals + success tests; **4 · What we found** keeps the 3 root problems |
+| How we measured | "Not required; appendix if asked" | Appendix A4 (with the glossary) |
+| Headline + full table | "One slide: Goal column on the left, green/red at the right" | **5 · Result by goal**: one table, verdict chips (3 Met, 3 Partial) |
+| Six changes | "Perfect; show the layer" | **6 · What we changed**: one card per goal, layer tags |
+| What did not work | "Fold it in; if you say what did not work, say what worked" | amber rows on 5 + Appendix A1 (talking points) |
+| Watch list | "That is observability, part of goal 2; appendix" | Appendix A3 |
+| Still open | "Not the final product; production readiness has started" | **7 · Where this goes next** |
+Timing: 0:10 + 0:40 + 0:40 + 0:30 + 1:10 + 1:00 + 0:40 = 4:50. Presenters: Bhargava 1–3, Shree 4–7 (he also floated taking it through 5; confirm at the rehearsal).
+
+**Deck publish:** live deck https://claude.ai/artifact/KMns74rheLukvPD6BzQzoW → version 19 (11 slide files: cover, product, ask, problem, result, changes, next, misses, injection, watch, measure; removed `numbers` and the empty image placeholder `f4911d55` that had been added by hand during the call). Assets uploaded: the login-gate screenshot (`Screenshot 2026-10-09 at 18.16.36.png`, taken by Shree during the call → `evidence/login-gate-10092026.png`) and the original class UI, captured by running the class build with a dummy key and printing the page with headless Chrome:
+```
+$ (cd stage2 && OPENAI_API_KEY=dummy-key ../Project-Shree-Bhargava/bhargava-code/.venv/bin/python web.py &)   # port 8000, no model call needed
+$ "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --force-device-scale-factor=2 --window-size=1463,968 --screenshot=stage2-original-ui.png http://localhost:8000/
+$ pkill -f "python web.py"          # also caught the Ami app on 4000 → restarted with tools/s5_reset.sh P1 (ready for P1 again)
+```
+**PowerPoint and PDF:** `tools/build_deck_pptx.js` rewritten for the 11 slides (pptxgenjs, sections, notes on every slide, 4 pictures, 4 tables; the verdict cells are filled green/amber):
+```
+$ NODE_PATH=<pptx-build>/node_modules node tools/build_deck_pptx.js "$PWD/Ami-L4-Readout-Bhargava-Shree-2026-10-08.pptx"   → wrote (593 kB)
+$ tools/.pdfenv/bin/python <pptx skill>/office/validate.py Ami-L4-Readout-Bhargava-Shree-2026-10-08.pptx                  → All validations PASSED!
+$ bhargava-code/.venv/bin/python tools/deck2pdf.py <deck-v2 root> Ami-L4-Readout-Bhargava-Shree-2026-10-08.pdf <4 blob=png>  → 11 slides
+```
+The PDF was rasterized (PyMuPDF) and checked page by page: nothing overflows, the chips and tables render, both product screenshots are legible. The PPTX layout is by geometry (no LibreOffice here); open it once in PowerPoint before presenting. File names kept as before so the links in the repo and the run-of-show still work; the footer now says "October 2026".
+
+**Other:** `bhargava-code` local `master` fast-forwarded to `79df0f4` (Bhargava's two docs commits: `readout.html` and the pre-merge READOUT drafts; no code change). Run-of-show `ami-l4-project/docs/PRESENTATION.md` rewritten for the new order, with Bhargava's own narration for slides 1–3 and the likely questions. Memory note saved on Bhargava's deck preferences and Kumar joining.
+
+**Pending list (§13) after this step:** items 1–4 (S5, witnessed run), 7 (delivery; rehearsal Fri 2–3 pm), 8 (Kumar links/group/inputs), 9 (readout.html numbers), 10 (presenter split).
