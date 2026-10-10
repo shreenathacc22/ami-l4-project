@@ -920,3 +920,11 @@ The PDF was rasterized (PyMuPDF) and checked page by page: nothing overflows, th
 **Other:** `bhargava-code` local `master` fast-forwarded to `79df0f4` (Bhargava's two docs commits: `readout.html` and the pre-merge READOUT drafts; no code change). Run-of-show `ami-l4-project/docs/PRESENTATION.md` rewritten for the new order, with Bhargava's own narration for slides 1–3 and the likely questions. Memory note saved on Bhargava's deck preferences and Kumar joining.
 
 **Pending list (§13) after this step:** items 1–4 (S5, witnessed run), 7 (delivery; rehearsal Fri 2–3 pm), 8 (Kumar links/group/inputs), 9 (readout.html numbers), 10 (presenter split).
+
+## 20. Second PPTX — the 8 October slides in the order Shree listed ✅ (2026-10-09)
+Shree asked for one more PowerPoint with the 8 October slides as listed in the meeting document's "Bhargava's deck recommendations" table: cover · prompt-injection screenshots · the problem (three cards) · how we measured · headline (four numbers) · the full table · six changes · what did not work · what we would watch · still open. Built from `tools/build_deck_pptx_8oct_order.js` (10 slides, notes on every slide, 2 pictures, 3 tables; footer "8 October 2026"), kept as a separate file so deck v2 is untouched:
+```
+$ NODE_PATH=<pptx-build>/node_modules node tools/build_deck_pptx_8oct_order.js "$PWD/Ami-L4-Readout-Bhargava-Shree-2026-10-08-original-flow.pptx"   → wrote (212 kB)
+$ validate.py Ami-L4-Readout-Bhargava-Shree-2026-10-08-original-flow.pptx   → All validations PASSED!
+```
+One fact updated so the deck is not wrong: the "Still open" third card now says PR #2 was merged on 8 October and the S5 fix and witnessed numbers go in a follow-up PR (the 8 Oct text said "review and merge PR #2"). Everything else is the 8 October content. Copy in `ami-l4-project/docs/`.

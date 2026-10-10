@@ -157,3 +157,4 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 - Live deck republished (v19), PPTX rebuilt and validated, PDF reprinted (11 pages) and checked page by page; run-of-show rewritten. Plan §19.
 - Side effect fixed: stopping the stage2 server also stopped the Ami app on 4000; restarted with `tools/s5_reset.sh P1`.
 - Next: rehearsal Fri 10 Oct 2–3 pm; send Kumar the links; S5 sessions and witnessed run still open (plan §13).
+- Second PPTX built on request: the 8 October slides in the listed order (injection second), `Ami-L4-Readout-Bhargava-Shree-2026-10-08-original-flow.pptx`, validated; plan §20. Deck v2 unchanged.
