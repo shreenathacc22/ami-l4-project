@@ -189,7 +189,7 @@ function diagramSlide(eyebrow, title, spec, notes) {
 }
 diagramSlide("Appendix A1", "How one turn works, step by step", DIAGRAMS.turn,
   "Appendix. Stages 1 to 5 happen before any model call: input policy, classification, the login gate and the answer cache, model routing, memory and prefetch. Stage 6 is the ReAct loop: the model either answers or asks for a tool; every tool request passes the guarded runner, which enforces scope, confirmation and eligibility. Stages 7 to 9: output policy, observability, memory write.");
-diagramSlide("Appendix A2", "Knowledge: the agent answers policy questions from the written rules", DIAGRAMS.rag,
+diagramSlide("Appendix A2", "Knowledge: answers come from the written rules", DIAGRAMS.rag,
   "Appendix. Retrieval-augmented generation: 15 written policy documents are chunked, embedded locally and indexed; each policy question retrieves the nearest passages and the model answers from them, quoting the rule. If the store is down the agent says it cannot look that up; it never invents a policy.");
 diagramSlide("Appendix A3", "The AI technology stack", DIAGRAMS.stack,
   "Appendix. Five layers: experience, the one agent, the AI services it calls, the data and knowledge it reads and writes, and the platform it runs and is tested on.");
@@ -243,8 +243,7 @@ table(s, [[hdr("#"), hdr("Do / type exactly"), hdr("Say"), hdr("What the audienc
   ["10", "Type: My USB-C hub arrived damaged and I want to talk to a person", "A numbered ticket, routed to the right team.", "A ticket number"],
   ["11", "Open the /logs tab", "Everything you saw is measured: cost, speed, tools, alerts.", "Populated dashboard, newest events, the alert table"]],
   [0.4, 4.0, 4.1, 3.63], { rowH: 0.42, fontSize: 10.5, y: 1.65 });
-txt(s, "Open the login page a minute early (a cold instance takes 10–20 s). A slow first reply is the cold start: wait, do not retype. If the AI platform is down the agent says it will get a person, which is goal 4 working.", { x: L, y: 6.4, w: W, h: 0.55, fontSize: 10.5, italic: true, color: C.text2, lineSpacingMultiple: 1.1 });
-s.addNotes("Appendix. Only for the deeper session, or if someone asks to see it live. Type the sentences exactly as written.");
+s.addNotes("Appendix. Only for the deeper session, or if someone asks to see it live. Type the sentences exactly as written. Open the login page a minute early (a cold instance takes 10–20 s). A slow first reply is the cold start: wait, do not retype. If the AI platform is down the agent says it will get a person, which is goal 4 working.");
 
 (async () => {
   await pres.writeFile({ fileName: OUT });

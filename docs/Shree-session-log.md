@@ -184,3 +184,4 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 ## 2026-10-13 — leadership connect deck and talk guide
 - `shreenath_bhargava-kumar_L4-project.pptx` rebuilt as the 10-minute leadership version (10 talk slides + 6 appendix slides, notes with timing); the 12 Oct technical deck kept as `…_explainer-2026-10-12.pptx`. New one-picture diagram (`tools/diagram_simple.js`), build script `tools/build_leadership_pptx.js`. Validator passed; 0 shapes out of bounds; not rendered (no LibreOffice, no Homebrew).
 - Talk guide `shreenath_bhargava-kumar_L4-project_talk-guide.md/.pdf` (7 pages): shape of the session, framing lines, narration per slide, Q&A bank, glossary, checklist. Plan §23 with the pending list. Deck and guide kept local.
+- 2026-10-13: deck delivered as PDF (`shreenath_bhargava-kumar_L4-project.pdf`, 16 pages) via the new `tools/pptx2pdf.py`; old explainer PDF kept as `…_explainer-2026-10-12.pdf`. Plan §23.1.

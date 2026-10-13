@@ -996,3 +996,6 @@ First diagram render showed two titles wider than their boxes ("2 · What kind o
 | 3 | Reconcile merged-master golden (17/28, 0.912) with the reported 24/28, 0.967; witnessed run and sign-off | Shree + Bhargava | — |
 | 4 | S5 user-trust sessions P1–P3, redesign, P4 re-test | Shree + 3 people | finding the people |
 | 5 | Balaji's answer on showcase vs review; Kumar's inputs via the WhatsApp group | Bhargava, Kumar | — |
+
+### 23.1 The deck as PDF ✅ (2026-10-13)
+Shree asked for a PDF only. `shreenath_bhargava-kumar_L4-project.pdf` is now the leadership deck (16 pages, 13.33 × 7.5 in: talk slides 1–10, appendix 11–16); the 12 Oct explainer PDF is kept as `shreenath_bhargava-kumar_L4-project_explainer-2026-10-12.pdf`. There is no LibreOffice or Homebrew here, so the new `tools/pptx2pdf.py` renders the PPTX itself: every shape, text run, table, line and picture is placed at its exact EMU position as HTML and printed with headless Chrome, with Carlito/Caladea standing in for Calibri/Cambria (metric-compatible, so the text wraps as in PowerPoint). This was also the first visual check of the PPTX. Two fixes came out of it: the A2 title wrapped into its diagram (shortened), and the A6 footnote collided with the table (moved to the speaker notes). All 16 pages checked.
