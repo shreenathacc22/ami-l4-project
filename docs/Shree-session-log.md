@@ -158,3 +158,6 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 - Side effect fixed: stopping the stage2 server also stopped the Ami app on 4000; restarted with `tools/s5_reset.sh P1`.
 - Next: rehearsal Fri 10 Oct 2–3 pm; send Kumar the links; S5 sessions and witnessed run still open (plan §13).
 - Second PPTX built on request: the 8 October slides in the listed order (injection second), `Ami-L4-Readout-Bhargava-Shree-2026-10-08-original-flow.pptx`, validated; plan §20. Deck v2 unchanged.
+
+## 2026-10-12 — backup + pull of the latest master
+- Backed up `bhargava-code` to `bhargava-code-backup-2026-10-12/` (README inside), then fast-forwarded master `79df0f4 → 9af4865` (Vercel deploy, Jira ticketing, UI changes, final submission deck). 415 tests pass. `Ami-Final-L4-Submission.pptx` copied to the project folder; Vercel URL saved in `.env` as `AMI_VERCEL_URL`. Plan §21.

@@ -928,3 +928,16 @@ $ NODE_PATH=<pptx-build>/node_modules node tools/build_deck_pptx_8oct_order.js "
 $ validate.py Ami-L4-Readout-Bhargava-Shree-2026-10-08-original-flow.pptx   → All validations PASSED!
 ```
 One fact updated so the deck is not wrong: the "Still open" third card now says PR #2 was merged on 8 October and the S5 fix and witnessed numbers go in a follow-up PR (the 8 Oct text said "review and merge PR #2"). Everything else is the 8 October content. Copy in `ami-l4-project/docs/`.
+
+## 21. Backup and pull of the latest master ✅ (2026-10-12)
+Bhargava's submission email to Balaji (12 Oct) lists the deck `docs/Ami-Final-L4-Submission.pptx`, a Vercel deployment and the repo. Shree asked to back up the local code with a date and pull the latest.
+- **Backup:** `bhargava-code-backup-2026-10-12/` (27 MB; full `.git`, `.env`, results, state; `.venv` and caches excluded; `BACKUP-README.txt` records branch `fix/s1-and-eval-failures` @ `851a707`, local master `79df0f4`, clean tree, and how to restore).
+- **Pull:** `bhargava-code` switched to `master` and fast-forwarded `79df0f4 → 9af4865` (≈55 commits of 10–11 Oct: Vercel deploy via PR #3 with `api/index.py`, `vercel.json`, `Dockerfile`, `pyproject.toml`; Jira/back-office ticketing and escalation matrix; login/logout button, per-reply feedback, light internals panel; orders preloaded on login; readout deck v3 → v10 → `Ami-Final-L4-Submission.pptx`; `l4-project/` import of Shree's evidence and tools; `results/golden_merged_master.json`).
+- **Tests on the pulled master:** `415 passed, 0 failed` (requirements re-installed; no new packages needed).
+- **PPTX:** `docs/Ami-Final-L4-Submission.pptx` (14 slides: product, ask, result, next, thank-you, what we changed, appendix A1–A7) copied to `Project-Shree-Bhargava/Ami-Final-L4-Submission.pptx`.
+- **.env:** added `AMI_VERCEL_URL=https://aurex-3j8t4xh40-ami-78d2.vercel.app` (comment + key; `.env` is untracked, so nothing to commit). Note: the name `VERCEL_URL` is reserved by Vercel, hence the prefix.
+```
+$ rsync -a --exclude=.venv --exclude=__pycache__ --exclude=.pytest_cache bhargava-code/ bhargava-code-backup-2026-10-12/
+$ git checkout master && git pull --ff-only origin master        → 9af4865
+$ .venv/bin/python -m pytest -q                                  → 415 passed
+```
