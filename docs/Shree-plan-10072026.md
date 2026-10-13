@@ -955,3 +955,14 @@ $ NODE_PATH=<node_modules> node tools/build_doc_pptx.js "$PWD/shreenath_bhargava
 $ NODE_PATH=<node_modules> node tools/build_doc_docx.js shreenath_bhargava-kumar_L4-project.md shreenath_bhargava-kumar_L4-project.docx
 ```
 (`pptxgenjs`, `docx` and `image-size` were installed into a scratch `node_modules`; the earlier scratch copy had been cleaned up.)
+
+### 22.2 Diagrams, and the deck cut to 15 slides ✅ (2026-10-12)
+Shree asked for pictorial explanations (flow chart, architecture, RAG, AI stack, how they interconnect, how many agents) and fewer slides.
+- `tools/diagrams.js` holds four diagrams as one spec each and renders them two ways: `toSVG` (→ `evidence/diagram-*.svg`, rasterised to PNG at 2× with headless Chrome by `tools/svg2png.py`) for the Word/PDF/Markdown versions, and `toPptx` (native, editable PowerPoint shapes and connectors) for the deck. Diagrams: **How Ami is built** (customer and staff → web server → the one agent core: policy layer, ReAct planner, memory, seven tools, profile, router, observability → LLM, knowledge base, order store, hand-off to humans); **One customer turn** (stages 1–9 with the ReAct loop and the guarded tool runner in the middle, plus the two early exits: login gate and cached reply); **RAG pipeline** (indexing lane and answering lane, the "store down" and "policy prefetch" notes); **AI technology stack** (five layers with the connections between them).
+- Agent count stated explicitly everywhere: **one agent (Ami)** with one LLM, two interchangeable planners (ReAct in production, plan-and-execute as the alternative), seven guarded tools, three memories plus a cache and a policy layer; the LLM judge in the golden-set evaluation is a grader, not an agent; the class loop is kept as a baseline only.
+- Deck `shreenath_bhargava-kumar_L4-project.pptx` rebuilt at **15 slides** (was 22): cover · executive summary · product (with the login-gate screenshot) · four diagram slides · guardrails/identity/hand-off · results · verdicts and misses · how the work was done · my contributions · an 11-step demo script · tests/value/next · links. The two code-map slides and the second demo slide moved to the Word/PDF only. validate.py PASSED; python-pptx geometry check: 0 shapes out of bounds; notes on every slide. Not rendered here (no LibreOffice).
+- Word and PDF rebuilt from the Markdown with the four diagrams and the agent-count paragraph (DOCX: 6 images, validate.py PASSED; PDF 19 pages, checked). No teammate names in the text.
+```
+$ node tools/diagrams.js evidence && bhargava-code/.venv/bin/python tools/svg2png.py evidence evidence/diagram-*.svg
+$ NODE_PATH=<node_modules> node tools/build_doc_pptx.js … ; node tools/build_doc_docx.js … ; tools/.pdfenv/bin/python tools/md2pdf.py shreenath_bhargava-kumar_L4-project.md
+```

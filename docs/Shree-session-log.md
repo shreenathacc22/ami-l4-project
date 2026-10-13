@@ -179,3 +179,4 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 5. Open `Ami-Final-L4-Submission.pptx` in PowerPoint once and check it matches what was emailed *(Shree)*
 - Leadership explainer written and built: `shreenath_bhargava-kumar_L4-project.pdf` (18 pages) — product, LLM/agent/memory/RAG, technology, code map, method, results, contributions, Vercel demo script, tests, links. Plan §22. Local only.
 - Explainer also delivered as editable PPTX (22 slides, notes) and DOCX (same content, clickable links); both validated. Plan §22.1. Local only.
+- Four diagrams added (architecture, turn flow, RAG pipeline, AI stack; native shapes in the PPTX, images in Word/PDF); deck cut to 15 slides; agent count stated as one agent (Ami) with the LLM judge as a grader. Plan §22.2.
