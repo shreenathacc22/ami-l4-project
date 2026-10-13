@@ -739,7 +739,7 @@ saved .../evidence/logs-dashboard-top-10082026.png  page='Ami — observability 
 - **Account question not cached:** the order-status turn ran the agent normally (`get_order`, 3,540 ms).
 - The "$0.113 per turn" KPI is inflated: the trace also holds the eval runs' model calls (see caveat in 4.2).
 
-![/logs dashboard — top](evidence/logs-dashboard-top-10082026.png)
+![/logs dashboard — top](../evidence/logs-dashboard-top-10082026.png)
 
 Full-page capture (5,930 px, every event): `evidence/logs-dashboard-10082026.png`.
 
@@ -834,8 +834,8 @@ $ kill <baseline pid>; tools/s5_reset.sh P1        # app on 4000 reset again for
 | Tools called | — | none (the "Agent internals" panel shows *No tools called this turn*) |
 | Cost | retries for minutes | the 15 s gateway retry budget, then `DEGRADED_REPLY` |
 
-![injection — before](evidence/injection-before-10082026.png)
-![injection — after](evidence/injection-after-10082026.png)
+![injection — before](../evidence/injection-before-10082026.png)
+![injection — after](../evidence/injection-after-10082026.png)
 
 Caveat: the old `web.py` prints nothing while it retries, so the server log cannot show the retry loop; the 14-minute figure comes from the Phase 1 analysis of Bhargava's eval run (§7). The screenshots went into the PR branch as `docs/evidence/` (commit `851a707`, pushed, so PR #2 shows them) and the READOUT row now points at them.
 
@@ -966,3 +966,33 @@ Shree asked for pictorial explanations (flow chart, architecture, RAG, AI stack,
 $ node tools/diagrams.js evidence && bhargava-code/.venv/bin/python tools/svg2png.py evidence evidence/diagram-*.svg
 $ NODE_PATH=<node_modules> node tools/build_doc_pptx.js … ; node tools/build_doc_docx.js … ; tools/.pdfenv/bin/python tools/md2pdf.py shreenath_bhargava-kumar_L4-project.md
 ```
+
+## 23. Leadership connect: the 10-minute deck and the talk guide ✅ (2026-10-13)
+Shree presents `shreenath_bhargava-kumar_L4-project.pptx` to leadership for 10 minutes, then Q&A: how an AI agent is used in online-order support, "this is how it works", a cohort project with friends shown on this platform, explicitly **not a deep dive**, with a separate session or 1-1 offered for next week or after the peak.
+
+**What changed.** The 12 October technical explainer (15 slides, kept as `shreenath_bhargava-kumar_L4-project_explainer-2026-10-12.pptx`) was replaced under the same file name by a leadership version, 16 slides:
+- **Slides 1–10, the talk (10:00):** cover · what this is and what today covers (the framing: cohort project, no deep dive, 1-1 later) · the retail problem · chatbot vs agent, and Ami's four abilities · what the customer sees (login-gate screenshot) · **how it works, in one picture** (new simple diagram, native shapes) · keeping it safe and trustworthy · did it work, **one table by goal with Met/Partial verdicts** in plain words · what a real deployment would take, and the offer · thank you / questions. Speaker notes with timing on every slide.
+- **Slides 11–16, appendix, not presented:** one turn step by step, RAG, the AI stack (the three diagrams from `tools/diagrams.js`), the full before/after/merged-master table, what did not work + the watch list, the 11-step demo script.
+- Names: "Shreenath (Shree), with two friends from the cohort"; teammates' names only in the file name, as before.
+
+**Talk guide:** `shreenath_bhargava-kumar_L4-project_talk-guide.md` → `.pdf` (7 pages, A4): the minute-by-minute shape, the three framing lines (opening, midway, closing), the narration for every slide, question-handling rules and a parking line, an 18-question Q&A bank grouped by business value / risk and safety / technology / project and team, a plain-language glossary, a pre-flight checklist, links.
+
+**Build and checks**
+```
+$ node tools/diagram_simple.js evidence && python tools/svg2png.py evidence evidence/diagram-simple.svg
+$ NODE_PATH=<scratch node_modules> node tools/build_leadership_pptx.js        # pptxgenjs 4.0.1 + applyTheme
+$ python validate.py shreenath_bhargava-kumar_L4-project.pptx                → All validations PASSED!
+$ python-pptx check: 16 slides, 0 shapes out of bounds, notes on every slide
+$ text-fit estimate on slides 1–10: 2 heading boxes enlarged (slides 3, 5); remaining flags are the diagram boxes, a false positive of the estimator (tight line spacing, centred text), confirmed on the SVG rendering
+$ python tools/md2pdf.py shreenath_bhargava-kumar_L4-project_talk-guide.md    → 7 pages, checked page by page
+```
+First diagram render showed two titles wider than their boxes ("2 · What kind of question?", "3 · The AI model decides") and two over-long sub-lines; re-laid out (wider boxes, shorter titles) and re-rendered. This Mac has no Homebrew, so LibreOffice could not be installed and the PPTX was not rendered to images; open it once in PowerPoint before the day.
+
+**Pending items (reminder)**
+| # | Item | Owner | Waiting on |
+|---|---|---|---|
+| 1 | Open the new PPTX in PowerPoint once and page through; rehearse with the guide (10 min) | Shree | — |
+| 2 | Leadership connect: deliver the 10-minute talk; book the deeper session / 1-1 if asked | Shree | the slot |
+| 3 | Reconcile merged-master golden (17/28, 0.912) with the reported 24/28, 0.967; witnessed run and sign-off | Shree + Bhargava | — |
+| 4 | S5 user-trust sessions P1–P3, redesign, P4 re-test | Shree + 3 people | finding the people |
+| 5 | Balaji's answer on showcase vs review; Kumar's inputs via the WhatsApp group | Bhargava, Kumar | — |
