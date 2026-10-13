@@ -944,3 +944,14 @@ $ .venv/bin/python -m pytest -q                                  → 415 passed
 
 ## 22. Project explainer for leadership ✅ (2026-10-12)
 `shreenath_bhargava-kumar_L4-project.md` → `.pdf` (18 pages, A4, built with `tools/md2pdf.py`): the project from beginning to end for a leadership reader — the retail use case, the two modes (anonymous / signed in), where the LLM and the agent sit, how one ReAct turn works (input policy → classification → answer cache → routing → memory and prefetch → guarded tool loop → output policy → observability → memory write), memory (conversation, working, long-term, answer cache), RAG (15 policy documents, chunked at headings, local bge-micro-v2 embeddings, ChromaDB), tools and guardrails, the policy layer, identity and isolation, tickets and the escalation matrix with Jira delivery, monitoring and alerts, the technology table (and why no Kafka), a code map of every module, the method and phases, the results table (before / after / merged master), the six verdicts, the misses, the watch list, a first-person "leadership and contributions" section, a 15-step live-demo script for the Vercel app with the exact sentences to type, the automated test suites with commands, retail relevance, next steps and all links. Facts taken from master `9af4865`, `readout.html` and the result files; teammates are referred to as "the team" by request (names appear only in the file name). Kept local, not pushed to the public repo.
+
+### 22.1 Editable versions of the explainer ✅ (2026-10-12)
+Same base name, three formats, all local:
+- `shreenath_bhargava-kumar_L4-project.pdf` (18 pages, from the Markdown with `tools/md2pdf.py`).
+- `shreenath_bhargava-kumar_L4-project.pptx` — 22 editable slides built with `tools/build_doc_pptx.js` (pptxgenjs structured deck: theme, two layouts, five sections, speaker notes on every slide, two screenshots, clickable links; validate.py PASSED; python-pptx geometry check: no shape leaves the slide). Not rendered here (no LibreOffice), so open it once in PowerPoint.
+- `shreenath_bhargava-kumar_L4-project.docx` — built from the same Markdown with `tools/build_doc_docx.js` (docx-js: Title/Heading styles, 15 tables, 2 images, bullet and numbered lists, code blocks, 19 clickable links, page-numbered footer; validate.py PASSED).
+```
+$ NODE_PATH=<node_modules> node tools/build_doc_pptx.js "$PWD/shreenath_bhargava-kumar_L4-project.pptx"
+$ NODE_PATH=<node_modules> node tools/build_doc_docx.js shreenath_bhargava-kumar_L4-project.md shreenath_bhargava-kumar_L4-project.docx
+```
+(`pptxgenjs`, `docx` and `image-size` were installed into a scratch `node_modules`; the earlier scratch copy had been cleaned up.)
