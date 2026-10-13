@@ -150,6 +150,12 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 - Verified on GitHub: PR #2 state MERGED at 18:50 UTC, 11 commits, no review comments; `851a707` is an ancestor of `origin/master` (`317632a`). Local master fast-forwarded; public repo snapshot updated to master. Plan §18. Pending: items 1–4 (S5, witnessed run) → new PR; item 6 delivery of the readout.
 - Correction: Bhargava's review was done as commits after the merge — a security fix to our Phase 1 `guarded_run` (model-supplied `scope` was consulted before the session's; now dropped unconditionally, with a new test) and a test-flake fix. Master runs 346 tests green. To be added to the READOUT's §5 in the follow-up PR.
 
+## 2026-10-09 — session start: status review and questions (before the call analysis)
+- **Status against Balaji's email (5 Oct):** measured ✅ · improved with before/after ✅ (S1–S6, not just one) · pre/post report ✅ (READOUT.md) · one-page readout ⚠️ (needs the witnessed sign-off and S5) · present together ⏳. Open then: S5 sessions, witnessed run, delivery of the presentation, READOUT §5 note on Bhargava's scope fix.
+- **"Original test HTML page":** there is none; Ami is tested through `ui/chat.html` (served at `/` by `web.py`, port 4000), with `ui/login.html` and `ui/logs.html`. All three were added in Bhargava's commit `a2c8c73` (6 Oct) and unchanged since; the class `stage2/ui/` has `chat.html`, `logs.html`, `traces.html` and no login page.
+- **"readout.html":** did not exist anywhere locally or in the repo history at that point; the readout was `READOUT.md` plus the deck PDF/PPTX. Bhargava added `readout.html` to master later the same day (commit `5b52e35`, shared in the Zoom chat).
+- **Sharing the live deck with Bhargava:** from the deck's Share menu (invite by email with edit rights, or link sharing); the `#slide-…` fragment only picks the opening slide. Done by Shree during the call (public link).
+
 ## 2026-10-09 — Bhargava call, meeting notes, deck v2
 - Recording analysed from `10092026-zoom-recording/` (80 min; Shree, Bhargava, Kumar). Transcribed locally with faster-whisper (nothing uploaded); transcript saved beside the recording; keyframes used for screen context.
 - Meeting document (summary, discussion points with timestamps, decisions, Bhargava's slide-by-slide notes, action items with owner/due/status, metric glossary, sources): https://claude.ai/code/artifact/834f528b-e282-41b0-8305-4f5d8c6e4505
@@ -160,4 +166,14 @@ Clear win: `ord-cancel` 0.33 → 1.00 (the confirmation fix). Clear regression: 
 - Second PPTX built on request: the 8 October slides in the listed order (injection second), `Ami-L4-Readout-Bhargava-Shree-2026-10-08-original-flow.pptx`, validated; plan §20. Deck v2 unchanged.
 
 ## 2026-10-12 — backup + pull of the latest master
+- **Golden runs, counted (asked by Shree):** five full runs on the same 28 frozen rows, all 8 Oct. Before: Bhargava's `golden_baseline.json` (16/28, 0.829, $0.195) and Shree's `golden_before_cd098e0.json` (**16/28, 0.805, $0.224**, the reported "before"); one aborted attempt (6 rows, old harness gave the judge no evidence) not counted. After: `golden_after_phase1.json` (16/28, 0.856, $0.257, intermediate) and `golden_final.json` (**24/28, 0.967, $0.139**, the reported "after", code `858e9aa`). Plus the judge audit (`--audit`), which grades the references, not the agent.
+- Bhargava's email to Balaji (12 Oct): submission = `docs/Ami-Final-L4-Submission.pptx`, Vercel deployment `https://aurex-3j8t4xh40-ami-78d2.vercel.app`, repo `barusr9/aurex-ami`; the team is asking Balaji whether the next step is a showcase or a review.
 - Backed up `bhargava-code` to `bhargava-code-backup-2026-10-12/` (README inside), then fast-forwarded master `79df0f4 → 9af4865` (Vercel deploy, Jira ticketing, UI changes, final submission deck). 415 tests pass. `Ami-Final-L4-Submission.pptx` copied to the project folder; Vercel URL saved in `.env` as `AMI_VERCEL_URL`. Plan §21.
+- **Finding from the pull:** `results/golden_merged_master.json` (Bhargava, 10 Oct) is a golden run on merged master: **17/28 clean, avg 0.912, agent $0.113** — below the 24/28 · 0.967 reported for `858e9aa`. The decks and READOUT no longer match what master produces; to be reconciled with Bhargava before Balaji reviews.
+
+## Open items after this session (2026-10-12)
+1. Reconcile the merged-master golden result (17/28, 0.912) with the reported 24/28, 0.967; decide which numbers the submission stands on *(Shree + Bhargava)*
+2. Balaji's answer on showcase vs review *(Bhargava asked)*
+3. S5 sessions P1–P3, redesign, P4 re-test; witnessed run and sign-off *(Shree + Bhargava)*
+4. Kumar's inputs / WhatsApp group; send him the links *(Shree, Kumar)*
+5. Open `Ami-Final-L4-Submission.pptx` in PowerPoint once and check it matches what was emailed *(Shree)*
